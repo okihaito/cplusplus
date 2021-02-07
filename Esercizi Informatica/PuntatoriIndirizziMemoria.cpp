@@ -1,5 +1,5 @@
-*/ Scrivere una funzione che possa ricevere in input due puntatori contenenti l'indirizzo di memoria di due numeri da sommare.
-  La funzione dovrà stampare, inoltre, gli indirizzi di memoria e il valore delle variabili e restituire il calcolo della somma tra i due numeri al main */
+//Scrivere una funzione che possa ricevere in input due puntatori contenenti l'indirizzo di memoria di due numeri da sommare.
+//La funzione dovrà stampare, inoltre, gli indirizzi di memoria e il valore delle variabili e restituire il calcolo della somma tra i due numeri al main.
 
 #include <iostream>
 
