@@ -20,6 +20,7 @@ float Esponente(float base, float esp);
 float Cos(float grad);
 float Sin(float grad);
 float Tan(float grad);
+int p2();
 
 //PROGRAMMA
 int main()
@@ -37,6 +38,7 @@ int main()
    i=0;
    //TABELLA MENU
    cout << "+---------------+" << endl <<  "|   Seleziona   |" << endl <<  "+---------------+" << endl <<  "| 1 = +         |" << endl << "| 2 = -         |" << endl << "| 3 = *         |" << endl << "| 4 = /         |" << endl << "| 5 = sqrt      |" << endl << "| 6 = pow       |" << endl << "| 7 = cos       |" << endl << "| 8 = sin       |" << endl << "| 9 = tan       |" << endl << "| 10 = Pag. 2   |" << endl << "+---------------+" << endl;
+   cout << " " << endl;
    cout << "-------------------------------------------" << endl;
    cout << "Inserisci: ";
    cin >> t; //SELEZIONE
@@ -196,13 +198,13 @@ int main()
                 i++;
                 }
     cout << "Caricamento..." << endl;
-    sleep(4);
+    cout << "--------------------------------------------------------------" << endl;
+    sleep(3);
                 while(i<sys){
                 system("CLS"); //pulisci 5 volte
                 i++;
                 }
-    cout << "Work in progress." << endl;
-    break;
+                return p2();
 
     //errore numero
     default:
@@ -213,13 +215,42 @@ int main()
                 i++;
                 }
                 return main();
+   }}
+/*
+---------------------------------------------------------------------
+                                PAGINA 2
+---------------------------------------------------------------------
+*/
+int p2()
+{
+    //sys
+    const int sys=5;
+    int i;
+    //calc
+    float a,b,e,esp,base,grad;
+    int t;
+
+   //INIZIO
+   a=0;
+   b=0;
+   i=0;
+
+    cout << "+---------------+" << endl <<  "|   Seleziona   |" << endl <<  "+---------------+" << endl <<  "| 11 = WIP      |" << endl << "+---------------+" << endl;
+    cout << " " << endl;
+    cout << "-------------------------------------------" << endl;
+    cout << "Inserisci: ";
+    cin >> t; //SELEZIONE
+    return 0;
+}
+
+
+
 /*
 ---------------------------------------------------------------------
                                 FUNZIONI
----------------------------------------------------------------------*/
+---------------------------------------------------------------------
+*/
 
-
-}}
 float Somma(float a,float b) //FUNZIONE SOMMA
 {
     float s; //NUOVA VARIABILE
