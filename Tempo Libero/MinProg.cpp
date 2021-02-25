@@ -341,7 +341,7 @@
                             system("CLS");
                             return main();
                             }
-                        else
+                        else //BUG DA RISOLVERE
                             cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
@@ -367,7 +367,7 @@
             return p2();
 
 /*--------------------------------------------------------------------
-                        COLORI TEST
+                           PAGINA OPZIONI
 ----------------------------------------------------------------------
 */
     case 'Y':
