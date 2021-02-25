@@ -16,6 +16,7 @@
     #include <cmath>
     #include <unistd.h>
     #include <cstdlib>
+    #include <windows.h>
     using namespace std;
 /*
 ---------------------------------------------------------------------
@@ -25,6 +26,7 @@
     void Linea();
     void Logo();
     int Exit();
+    int Colore();
     float Somma(float a, float b);
     float Differenza(float a, float b);
     float Moltiplicazione(float a, float b);
@@ -36,6 +38,7 @@
     float Tan(float grad);
     double p2();
     double pagtri();
+    double Opzioni();
 /*
 ---------------------------------------------------------------------
                             INIZIO PROGRAMMA
@@ -44,6 +47,7 @@
         int main()
         {
         char key;
+        int Color;
         const int sys=5;
         int i;
         //calc
@@ -66,11 +70,13 @@
         cout << "4) Divisione" << endl;
         cout << "5) Radice quadrata di un numero" << endl;
         cout << "" << endl;
-        cout << "6) Vai nella Pagina 2" << endl;
-        cout << "7) Esci dal programma" << endl;
+        cout << "X) Vai nella Pagina 2" << endl;
+        cout << "Y) Opzioni" << endl;
+        cout << "Z) Esci dal programma" << endl;
         cout << "" << endl;
         cout << "Inserisci: ";
         key = getch();
+        key = toupper(key);
 
    //SCELTA
         switch(key)
@@ -122,6 +128,7 @@
                             return main();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -143,7 +150,7 @@
             cout << "-" << endl;
             cin >> b;
             sysf= Differenza(a,b); //CHIAMA LA FUNZIONE DIFFERENZA
-            cout << "La differenza e: " << sysf << endl;
+            cout << "La differenza e': " << sysf << endl;
             cout << "" << endl;
             Linea();
             cout << "+------------------------+" << endl << "|       Seleziona        |" << endl <<  "+------------------------+" << endl <<  "| O = Ritorna nel menu   |" << endl << "| X = Esci dal programma |" << endl << "+------------------------+" << endl; //MENU
@@ -175,6 +182,7 @@
                             return main();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -228,6 +236,7 @@
                             return main();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -281,6 +290,7 @@
                             return main();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -332,6 +342,7 @@
                             return main();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -344,7 +355,7 @@
                         PAGINA SUCCESSIVA
 ---------------------------------------------------------------------
 */
-    case '6':
+    case 'X':
         while(i<sys){
             system("CLS"); //pulisci 5 volte
             i++;
@@ -354,12 +365,21 @@
         sleep(3);
             system("CLS"); //pulisci 5 volte
             return p2();
+
+/*--------------------------------------------------------------------
+                        COLORI TEST
+----------------------------------------------------------------------
+*/
+    case 'Y':
+        system("CLS");
+        Opzioni();
+
 /*
 ---------------------------------------------------------------------
                         USCITA PROGRAMMA P1
 ---------------------------------------------------------------------
 */
-    case '7':
+    case 'Z':
         Exit();
         return 0;
 /*
@@ -369,6 +389,7 @@
 */
     //errore numero
     default:
+        cout << '\a';
         cout << "Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
@@ -451,6 +472,7 @@ double pagtri()
                         return p2();
                     }
                     else
+                        cout << '\a';
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -499,6 +521,7 @@ double pagtri()
                         return p2();
                                 }
                     else
+                        cout << '\a';
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -546,6 +569,7 @@ double pagtri()
                         return p2();
                                 }
                     else
+                        cout << '\a';
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -560,6 +584,7 @@ double pagtri()
 */
     //errore numero
     default:
+        cout << '\a';
         cout << "Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
@@ -670,6 +695,7 @@ double p2()
                             return p2();
                             }
                         else
+                            cout << '\a';
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -714,6 +740,7 @@ double p2()
 ---------------------------------------------------------------------
 */
     case 'Y':
+        cout << '\a';
         cout << "La pagina successiva non e' ancora pronta. (WIP)" << endl;
         sleep(2);
         cout << "Caricamento menu principale..." << endl;
@@ -727,7 +754,8 @@ double p2()
 */
     //errore numero
     default:
-        cout << "Numero non disponibile." << endl;
+        cout << '\a';
+        cout << "Errore: Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
             system("CLS"); //pulisci 5 volte
@@ -769,6 +797,7 @@ float Radice(float a) //FUNZIONE RADICE QUADRATA
     float s; //NUOVA VARIABILE
     s=sqrt(a);
     if(a<0){ //SE IL NUMERO INSERITO E' NEGATIVO ALLORA E' IMPOSSIBILE
+        cout << '\a';
         cout << "Errore: Il numero e' negativo!" << endl;
         return 0; //RISULTATO 0
     }
@@ -797,6 +826,83 @@ float Tan(float grad) //FUNZIONE TAN
     float s; //NUOVA VARIABILE
     s=tan(grad);
     return s; //RITORNA INDIETRO CON IL RISULTATO
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+                                                    OPZIONI
+------------------------------------------------------------------------------------------------------------*/
+double Opzioni()
+{
+    char key;
+    int i;
+    const int sys=5;
+
+        Logo();
+        cout << "" << endl;
+        cout << "1) Colore Console" << endl;
+        cout << "" << endl;
+        cout << "X) Torna nel menu" << endl;
+        cout << "Y) Esci dal programma" << endl;
+        cout << "" << endl;
+        cout << "Inserisci: ";
+        key = getch();
+        key = toupper(key);
+
+   //SCELTA
+        switch(key)
+        {
+        case '1':
+            Colore();
+        case 'X':
+            cout << "Caricamento menu..." << endl;
+            sleep(2);
+            system("CLS");
+            return main();
+        case 'Y':
+            key=' ';
+            Exit();
+            return 0;
+            break;
+        default:
+            cout << '\a';
+            cout << "Errore: Numero non disponibile." << endl;
+            sleep(2);
+            system("CLS"); //pulisci 5 volte
+            return main();
+        }
+}
+
+int Colore()
+{
+    int i;
+        system("CLS");
+        Logo();
+        cout << "" << endl;
+        for(i=0;i<256;i++)
+            {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),i);
+                cout << "" << i;
+            }
+        cout << "" << endl;
+        i=7;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),i);
+        sleep(4);
+        cout << "" << endl;
+        cout << "In tutto ci sono 256 colori nella console." << endl;
+        sleep(1);
+        cout << "0-15: Colori testo." << endl;
+        sleep(1);
+        cout << "15+: Colori testo con background colorato." << endl;
+        Linea();
+        cout << "Inserisci: ";
+        cin >> i;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),i);
+        cout << "Colore selezionato!" << endl;
+        sleep(2);
+        cout << "Caricamento menu..." << endl;
+        sleep(2);
+        system("CLS");
+        return main();
 }
 
 
