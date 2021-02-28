@@ -17,6 +17,7 @@
     #include <unistd.h>
     #include <cstdlib>
     #include <windows.h>
+    #include <iomanip>
     using namespace std;
 /*
 ---------------------------------------------------------------------
@@ -25,6 +26,7 @@
 */
     void Linea();
     void Logo();
+    int Suono();
     int Exit();
     int Colore();
     float Somma(float a, float b);
@@ -44,6 +46,10 @@
                             INIZIO PROGRAMMA
 ---------------------------------------------------------------------
 */
+        //Variabili Globali
+        int snd=1;
+
+
         int main()
         {
         char key;
@@ -128,7 +134,9 @@
                             return main();
                             }
                         else
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -182,7 +190,9 @@
                             return main();
                             }
                         else
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -236,7 +246,9 @@
                             return main();
                             }
                         else
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -290,7 +302,9 @@
                             return main();
                             }
                         else
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -342,7 +356,9 @@
                             return main();
                             }
                         else //BUG DA RISOLVERE
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -389,7 +405,9 @@
 */
     //errore numero
     default:
+        if(snd==1){
         cout << '\a';
+        }
         cout << "Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
@@ -472,7 +490,9 @@ double pagtri()
                         return p2();
                     }
                     else
+                        if(snd==1){
                         cout << '\a';
+                        }
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -521,7 +541,9 @@ double pagtri()
                         return p2();
                                 }
                     else
+                        if(snd==1){
                         cout << '\a';
+                        }
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -569,7 +591,9 @@ double pagtri()
                         return p2();
                                 }
                     else
+                        if(snd==1){
                         cout << '\a';
+                        }
                         cout << "Errore: Carattere non consentito." << endl;
                         sleep(2);
                         cout << "Caricamento menu..." << endl;
@@ -584,7 +608,9 @@ double pagtri()
 */
     //errore numero
     default:
+        if(snd==1){
         cout << '\a';
+        }
         cout << "Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
@@ -695,7 +721,9 @@ double p2()
                             return p2();
                             }
                         else
+                            if(snd==1){
                             cout << '\a';
+                            }
                             cout << "Errore: Carattere non consentito." << endl;
                             sleep(2);
                             cout << "Caricamento menu..." << endl;
@@ -740,7 +768,9 @@ double p2()
 ---------------------------------------------------------------------
 */
     case 'Y':
+        if(snd==1){
         cout << '\a';
+        }
         cout << "La pagina successiva non e' ancora pronta. (WIP)" << endl;
         sleep(2);
         cout << "Caricamento menu principale..." << endl;
@@ -754,7 +784,9 @@ double p2()
 */
     //errore numero
     default:
+        if(snd==1){
         cout << '\a';
+        }
         cout << "Errore: Numero non disponibile." << endl;
         sleep(2);
         while(i<sys){
@@ -840,6 +872,7 @@ double Opzioni()
         Logo();
         cout << "" << endl;
         cout << "1) Colore Console" << endl;
+        cout << "2) Suono Console" << endl;
         cout << "" << endl;
         cout << "X) Torna nel menu" << endl;
         cout << "Y) Esci dal programma" << endl;
@@ -853,6 +886,8 @@ double Opzioni()
         {
         case '1':
             Colore();
+        case '2':
+            Suono();
         case 'X':
             cout << "Caricamento menu..." << endl;
             sleep(2);
@@ -872,6 +907,38 @@ double Opzioni()
         }
 }
 
+int Suono()
+{
+    char key;
+
+    system("CLS");
+    Logo();
+    cout << "ATTENZIONE NON FUNZIONA IN QUESTO MOMENTO." << endl;
+    cout << "" << endl;
+    cout << "Se vuoi disattivare i suoni della console scrivi O." << endl;
+    cout << "Se vuoi attivare i suoni della console scrivi I." << endl;
+    cout << "" << endl;
+    Linea();
+    cout << "Inserisci: ";
+    key = getch();
+    key = toupper(key);
+
+    switch(key)
+    {
+    case 'I':
+        snd=0;
+    case 'O':
+        snd=1;
+    default:
+        cout << '\a';
+        cout << "Errore: Numero non disponibile." << endl;
+        sleep(2);
+        system("CLS"); //pulisci 5 volte
+        return main();
+    }
+
+}
+
 int Colore()
 {
     int i;
@@ -881,7 +948,8 @@ int Colore()
         for(i=0;i<256;i++)
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),i);
-                cout << "" << i;
+                cout << " ";
+                cout << setw(1) << i;
             }
         cout << "" << endl;
         i=7;
@@ -916,7 +984,7 @@ void Logo()
    cout << "      :+:+: :+:+:      :+:     :+:+:   :+: :+:    :+: :+:    :+: :+:    :+: :+:    :+: " << endl;
    cout << "    +:+ +:+:+ +:+     +:+     :+:+:+  +:+ +:+    +:+ +:+    +:+ +:+    +:+ +:+         " << endl;
    cout << "   +#+  +:+  +#+     +#+     +#+ +:+ +#+ +#++:++#+  +#++:++#:  +#+    +:+ :#:          " << endl;
-   cout << "  +#+       +#+     +#+     +#+  +#+#+# +#+        +#+    +#+ +#+    +#+ +#+   +#+#    " << endl;
+   cout << "  +#+       +#+     +#+     +#+  +#+#+# +#+        +#+    +#+ +#+    +#+ +#+  ++#+#    " << endl;
    cout << " #+#       #+#     #+#     #+#   #+#+# #+#        #+#    #+# #+#    #+# #+#    #+#     " << endl;
    cout << "###       ### ########### ###    #### ###        ###    ###  ########   ########       " << endl;
    cout << "" << endl;
